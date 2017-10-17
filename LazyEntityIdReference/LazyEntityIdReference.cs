@@ -29,9 +29,10 @@ namespace LazyEntityIdReference
             return Entity;
         }
 
-        public static implicit operator T(LazyEntityIdReference<T> entity)
+        public void Set(T entity)
         {
-            return entity.Get();
+            Id = EntityIdRegistry.ToId(entity);
+            Entity = entity;
         }
     }
 }
